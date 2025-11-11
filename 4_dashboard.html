@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dashboard | English 6 Learning Portal</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+
+<style>
+  body {
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(135deg, #FBEFEF, #FFF8E3, #E8F6F3);
+    background-size: 400% 400%;
+    animation: gradientFlow 12s ease infinite;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    text-align: center;
+    overflow: hidden;
+    position: relative;
+  }
+
+  @keyframes gradientFlow {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+  }
+
+  /* Floating Letters */
+  .letter {
+    position: absolute;
+    font-size: 3rem;
+    color: rgba(0, 0, 0, 0.08);
+    font-weight: bold;
+    animation: floatLetters 9s linear infinite;
+    user-select: none;
+  }
+
+  @keyframes floatLetters {
+    0% { transform: translateY(0) rotate(0deg); opacity: 1; }
+    100% { transform: translateY(-800px) rotate(360deg); opacity: 0; }
+  }
+
+  .letter:nth-child(1) { left: 10%; animation-delay: 0s; }
+  .letter:nth-child(2) { left: 25%; animation-delay: 2s; }
+  .letter:nth-child(3) { left: 40%; animation-delay: 4s; }
+  .letter:nth-child(4) { left: 60%; animation-delay: 1s; }
+  .letter:nth-child(5) { left: 75%; animation-delay: 3s; }
+  .letter:nth-child(6) { left: 90%; animation-delay: 5s; }
+
+  h1 {
+    font-family: 'Playfair Display', serif;
+    color: #5E4B3C;
+    margin-bottom: 50px;
+    text-shadow: 1px 1px #fff;
+    font-size: 2.2em;
+    z-index: 2;
+  }
+
+  .container {
+    display: flex;
+    gap: 40px;
+    flex-wrap: wrap;
+    justify-content: center;
+    z-index: 2;
+  }
+
+  .card {
+    width: 180px;
+    height: 150px;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    box-shadow: 0 6px 10px rgba(0,0,0,0.15);
+    transition: all 0.3s ease;
+    font-size: 20px;
+    font-weight: bold;
+    color: white;
+    text-decoration: none;
+    backdrop-filter: blur(5px);
+  }
+
+  .card:hover {
+    transform: translateY(-8px) scale(1.05);
+    box-shadow: 0 12px 20px rgba(0,0,0,0.2);
+  }
+
+  /* Cute colors per category */
+  .flashcard {
+    background: linear-gradient(135deg, #FFD6D6, #FFC3A0, #FFDEE9);
+  }
+
+  .quiz {
+    background: linear-gradient(135deg, #FFF5C3, #FFDAB9, #E2C2B9);
+  }
+
+  .games {
+    background: linear-gradient(135deg, #C8E6C9, #A5D6A7, #DCEDC8);
+    color: #3D3D3D;
+  }
+
+  .card span {
+    font-size: 30px;
+    display: block;
+    margin-bottom: 5px;
+  }
+
+  footer {
+    margin-top: 60px;
+    font-size: 14px;
+    color: #5E4B3C;
+    z-index: 2;
+  }
+
+  /* Logout Button */
+  .logout-btn {
+    margin-top: 40px;
+    background-color: #A67B5B;
+    color: #fff;
+    border: none;
+    padding: 10px 25px;
+    border-radius: 12px;
+    font-size: 1em;
+    cursor: pointer;
+    font-weight: bold;
+    transition: 0.3s;
+    box-shadow: 0 5px 12px rgba(166,123,91,0.3);
+    z-index: 2;
+  }
+
+  .logout-btn:hover {
+    background-color: #C19A6B;
+    transform: translateY(-3px);
+    box-shadow: 0 8px 18px rgba(166,123,91,0.4);
+  }
+</style>
+</head>
+<body>
+
+<!-- Floating Letters -->
+<div class="letter">A</div>
+<div class="letter">B</div>
+<div class="letter">C</div>
+<div class="letter">D</div>
+<div class="letter">E</div>
+<div class="letter">F</div>
+
+<h1>Welcome to EngLeap </h1>
+
+<div class="container">
+  <a href="5_flashcard.html" class="card flashcard">
+    <div><span>📚</span>FLASHCARD</div>
+  </a>
+
+  <a href="6_quiz.html" class="card quiz">
+    <div><span>🧠</span>QUIZ</div>
+  </a>
+
+  <a href="7_games.html" class="card games">
+    <div><span>🎮</span>GAMES</div>
+  </a>
+</div>
+
+<footer>💫 Click a box to start learning in a fun way! 💫</footer>
+
+<button class="logout-btn" onclick="logout()">Logout</button>
+
+
+
+<script>
+function logout() {
+  if (confirm("Are you sure you want to log out?")) {
+    window.location.href = "3_login.html";
+  }
+}
+</script>
+
+</body>
+</html>

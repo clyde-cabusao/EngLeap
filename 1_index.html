@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Learning Portal | English 6</title>
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+
+  <!-- Icons (for book) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+  <style>
+    body {
+      margin: 0;
+      height: 100vh;
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(135deg, #FBEFEF, #FFF8E3, #E8F6F3);
+      background-size: 400% 400%;
+      animation: gradientShift 12s ease infinite;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+    }
+
+    @keyframes gradientShift {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    h1 {
+      font-family: 'Playfair Display', serif;
+      color: #5E4B3C;
+      font-size: 3em;
+      text-align: center;
+      margin-bottom: 0.5rem;
+      text-shadow: 2px 2px #fff;
+    }
+
+    h2 {
+      font-weight: 400;
+      color: #7b6653;
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+
+    /* Floating Letters Animation */
+    .letter {
+      position: absolute;
+      font-size: 3rem;
+      color: rgba(0, 0, 0, 0.08);
+      font-weight: bold;
+      animation: floatLetters 8s linear infinite;
+      user-select: none;
+    }
+
+    @keyframes floatLetters {
+      0% { transform: translateY(0) rotate(0deg); opacity: 1; }
+      100% { transform: translateY(-800px) rotate(360deg); opacity: 0; }
+    }
+
+    .letter:nth-child(1) { left: 10%; animation-delay: 0s; }
+    .letter:nth-child(2) { left: 25%; animation-delay: 2s; }
+    .letter:nth-child(3) { left: 40%; animation-delay: 1s; }
+    .letter:nth-child(4) { left: 60%; animation-delay: 3s; }
+    .letter:nth-child(5) { left: 75%; animation-delay: 4s; }
+    .letter:nth-child(6) { left: 90%; animation-delay: 2.5s; }
+
+    /* Clickable Book Icon */
+    .book {
+      background: #A67B5B;
+      color: white;
+      border: none;
+      padding: 25px;
+      border-radius: 50%;
+      font-size: 2.5rem;
+      cursor: pointer;
+      transition: all 0.4s ease;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+      position: relative;
+      animation: floatBook 3s ease-in-out infinite;
+    }
+
+    .book:hover {
+      background: #C19A6B;
+      transform: scale(1.1);
+      box-shadow: 0 12px 24px rgba(0,0,0,0.25);
+    }
+
+    @keyframes floatBook {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+    }
+
+    .hint {
+      color: #6e5a44;
+      margin-top: 20px;
+      font-size: 1em;
+      opacity: 0.8;
+      text-align: center;
+    }
+
+  </style>
+</head>
+<body>
+  <!-- Floating Letters -->
+  <div class="letter">A</div>
+  <div class="letter">B</div>
+  <div class="letter">C</div>
+  <div class="letter">D</div>
+  <div class="letter">E</div>
+  <div class="letter">F</div>
+
+  <!-- Title -->
+  <h1>Welcome to the English Learning Portal</h1>
+  <h2>Grade 6 | Make a progress and improvement</h2>
+
+  <!-- Clickable Book -->
+  <button class="book" onclick="location.href='2_createaccount.html'">
+    <i class="fa-solid fa-book-open"></i>
+  </button>
+
+  <p class="hint">Click the book to begin your learning journey 📖</p>
+</body>
+</html>

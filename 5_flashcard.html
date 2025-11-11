@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flashcard</title>
+</head>
+
+</html>
+
+<!DOCTYPE html>
+<html lang="en">
+
+
+<style>
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(135deg, #d6ebff, #f3f8ff);
+      height: 100vh;
+    }
+
+    /* 🌸 Top Navigation Bar */
+    .navbar {
+      background-color: #ccdcf0;
+      display: flex;
+      justify-content: center;   /* Centers the buttons horizontally */
+      align-items: center;
+      gap: 40px;                 /* Space between Home and About Us */
+      padding: 18px 0;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      position: fixed;
+      width: 100%;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .navbar a {
+      text-decoration: none;
+      color: white;
+      font-weight: bold;
+      font-size: 13px;
+      background-color: #8fa8c7;
+      padding: 1px 10px;	
+      border-radius: 25px;
+      transition: 0.3s;
+      box-shadow: 0 3px 6px rgba(0,0,0,0.1);
+    }
+
+    .navbar a:hover {
+      background-color: #ccdcf0;
+      color: #1565c0;
+      transform: translateY(-3px);
+    }
+
+    /* Add padding so content isn't hidden under navbar */
+    .content {
+      margin-top: 100px;
+      text-align: center;
+      color: #1565c0;
+    }
+
+    h1 {
+      font-size: 2.5em;
+      text-shadow: 2px 2px 4px white;
+    }
+
+    p {
+      font-size: 0.5em;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- 🌈 Horizontal Navbar -->
+  <div class="navbar">
+    <a href="4_dashboard.html">🏠 HOME</a>
+    <a href="8_about.html">💬 ABOUT US</a>
+  </div>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Grade 6 English Flashcards</title>
+
+  <body>
+
+<style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(135deg, #ffd6e8, #d6f0ff, #fff5cc);
+      background-size: 400% 400%;
+      animation: bgMove 10s ease infinite;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      margin: 0;
+      text-align: center;
+    }
+
+
+    @keyframes bgMove {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    h1 {
+      color: #2d4f77;
+      text-shadow: 2px 2px #fff;
+      margin-bottom: 30px;
+    }
+
+    .flashcard {
+      perspective: 1000px;
+      width: 300px;
+      height: 200px;
+      cursor: pointer;
+      margin-bottom: 20px;
+    }
+
+    .card-inner {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      text-align: center;
+      transition: transform 0.8s;
+      transform-style: preserve-3d;
+    }
+
+    .flashcard.flipped .card-inner {
+      transform: rotateY(180deg);
+    }
+
+    .card-front, .card-back {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      backface-visibility: hidden;
+      border-radius: 15px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      font-size: 1.2em;
+    }
+
+    .card-front {
+      background-color: #fff;
+      color: #2d4f77;
+      font-weight: bold;
+    }
+
+    .card-back {
+      background-color: #2d4f77;
+      color: #fff;
+      transform: rotateY(180deg);
+    }
+
+    .buttons {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+    }
+
+    button {
+      background-color: #ADEED9;
+margin-top: 50px;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      padding: 10px 10px;
+      cursor: pointer;
+      font-size: 1em;
+      transition: 0.3s;
+    }
+
+    button:hover {
+      background-color: #1e3552;
+    }
+
+    footer {
+      margin-top: 20px;
+      color: #555;
+      font-size: 0.9em;
+    }
+  </style>
+</head>
+<body>
+  <h1>📘 Grade 6 English Flashcards</h1>
+
+  <!-- Flashcard Container -->
+  <div class="flashcard" id="flashcard">
+    <div class="card-inner">
+      <div class="card-front" id="frontText"></div>
+      <div class="card-back" id="backText"></div>
+    </div>
+  </div>
+
+  <!-- Navigation Buttons -->
+  <div class="buttons">
+    <button id="prevBtn">⬅ Previous</button>
+    <button id="nextBtn">Next ➡</button>
+  </div>
+
+  <footer>Click the card to flip it 💡</footer>
+
+  <script>
+    // Flashcard data
+    const flashcards = [
+      {
+        front: "What is a Noun?",
+        back: "A noun is a word that names a person, place, thing, or idea. 🏫"
+      },
+      {
+        front: "What is a Verb?",
+        back: "A verb shows action or state of being. Example: run, eat, is. 🏃‍♀️"
+      },
+      {
+        front: "What is an Adjective?",
+        back: "An adjective describes a noun. Example: beautiful, tall, happy. 🌸"
+      },
+      {
+        front: "What is a Simile?",
+        back: "A simile compares two things using like or as. Example: as brave as a lion. 🦁"
+      },
+      {
+        front: "What is a Metaphor?",
+        back: "A metaphor compares two things without using like or as. Example: Time is gold. ⏰"
+      }
+    ];
+
+    let currentCard = 0;
+    const frontText = document.getElementById('frontText');
+    const backText = document.getElementById('backText');
+    const flashcard = document.getElementById('flashcard');
+
+    // Show current card
+    function showCard() {
+      const card = flashcards[currentCard];
+      frontText.textContent = card.front;
+      backText.textContent = card.back;
+      flashcard.classList.remove('flipped');
+    }
+
+    // Buttons
+    document.getElementById('nextBtn').addEventListener('click', () => {
+      currentCard = (currentCard + 1) % flashcards.length;
+      showCard();
+    });
+
+    document.getElementById('prevBtn').addEventListener('click', () => {
+      currentCard = (currentCard - 1 + flashcards.length) % flashcards.length;
+      showCard();
+    });
+
+    // Flip on click
+    flashcard.addEventListener('click', () => {
+      flashcard.classList.toggle('flipped');
+    });
+
+    // Initial card display
+    showCard();
+  </script>
+</body>
+</html>

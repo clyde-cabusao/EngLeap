@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>English 6 - Word Match</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+<style>
+  body {
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(135deg, #FFF8E3, #E3F2FD, #FDE2E4);
+    background-size: 400% 400%;
+    animation: gradientFlow 12s ease infinite;
+    text-align: center;
+    color: #1a237e;
+    overflow-x: hidden;
+  }
+
+  @keyframes gradientFlow {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+  }
+
+  /* Floating Letters */
+  .letter {
+    position: absolute;
+    font-size: 3rem;
+    color: rgba(0, 0, 0, 0.07);
+    font-weight: bold;
+    animation: floatLetters 9s linear infinite;
+    user-select: none;
+  }
+
+  @keyframes floatLetters {
+    0% { transform: translateY(0) rotate(0deg); opacity: 1; }
+    100% { transform: translateY(-800px) rotate(360deg); opacity: 0; }
+  }
+
+  .letter:nth-child(1) { left: 10%; animation-delay: 0s; }
+  .letter:nth-child(2) { left: 25%; animation-delay: 2s; }
+  .letter:nth-child(3) { left: 40%; animation-delay: 4s; }
+  .letter:nth-child(4) { left: 60%; animation-delay: 1s; }
+  .letter:nth-child(5) { left: 75%; animation-delay: 3s; }
+  .letter:nth-child(6) { left: 90%; animation-delay: 5s; }
+
+  /* Navbar */
+  .navbar {
+    background: rgba(144, 202, 249, 0.9);
+    backdrop-filter: blur(6px);
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    padding: 15px 0;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    z-index: 10;
+  }
+
+  .navbar a {
+    text-decoration: none;
+    color: #fff;
+    font-weight: bold;
+    background-color: #64b5f6;
+    padding: 10px 25px;
+    border-radius: 25px;
+    transition: 0.3s;
+  }
+
+  .navbar a:hover {
+    background-color: #bbdefb;
+    color: #1565c0;
+  }
+
+  /* Main Container */
+  .container {
+    margin-top: 140px;
+    background: #ffffffcc;
+    backdrop-filter: blur(10px);
+    display: inline-block;
+    padding: 40px 50px;
+    border-radius: 25px;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+    animation: fadeIn 1.2s ease;
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; transform: scale(0.95); }
+    to { opacity: 1; transform: scale(1); }
+  }
+
+  h1 {
+    color: #0d47a1;
+    font-family: 'Playfair Display', serif;
+    margin-bottom: 10px;
+  }
+
+  p { color: #37474f; }
+
+  .question {
+    font-size: 1.3em;
+    margin: 25px 0;
+    font-weight: 600;
+  }
+
+  .choices button {
+    display: block;
+    margin: 10px auto;
+    padding: 10px 20px;
+    border-radius: 25px;
+    border: none;
+    background: linear-gradient(135deg, #90caf9, #64b5f6);
+    color: white;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    width: 200px;
+    transition: all 0.3s ease;
+  }
+
+  .choices button:hover {
+    transform: scale(1.05);
+    background: linear-gradient(135deg, #64b5f6, #42a5f5);
+  }
+
+  .navigation {
+    margin-top: 25px;
+  }
+
+  .navigation button {
+    margin: 8px;
+    padding: 8px 20px;
+    border: none;
+    border-radius: 25px;
+    background: linear-gradient(135deg, #64b5f6, #42a5f5);
+    color: white;
+    cursor: pointer;
+    font-weight: bold;
+    transition: 0.3s;
+  }
+
+  .navigation button:hover {
+    background: linear-gradient(135deg, #90caf9, #2196f3);
+    transform: translateY(-2px);
+  }
+
+  .result {
+    font-weight: bold;
+    margin-top: 10px;
+  }
+
+  .scoreboard {
+    font-size: 1.2em;
+    color: #0d47a1;
+    margin-top: 20px;
+  }
+</style>
+</head>
+<body>
+
+<!-- Floating Letters -->
+<div class="letter">A</div>
+<div class="letter">B</div>
+<div class="letter">C</div>
+<div class="letter">D</div>
+<div class="letter">E</div>
+<div class="letter">F</div>
+
+<!-- Navbar -->
+<div class="navbar">
+  <a href="4_dashboard.html">🏠 HOME</a>
+  <a href="8_about.html">💬 ABOUT US</a>
+  <a href="7_games.html">🎮 GAMES</a>
+</div>
+
+<!-- Game Container -->
+<div class="container">
+  <h1>🧩 Word Match Game</h1>
+  <p>Match each word with its meaning!</p>
+  <div class="question" id="question"></div>
+  <div class="choices" id="choices"></div>
+  <div class="result" id="result"></div>
+
+  <div class="navigation">
+    <button onclick="prevQuestion()">⬅ Previous</button>
+    <button onclick="nextQuestion()">Next ➡</button>
+  </div>
+
+  <div class="scoreboard" id="scoreboard"></div>
+</div>
+
+<!-- JavaScript Logic -->
+<script>
+const quiz = [
+  {word:"Happy",options:["Joyful","Sad","Tired"],answer:"Joyful"},
+  {word:"Brave",options:["Fearless","Afraid","Lazy"],answer:"Fearless"},
+  {word:"Silent",options:["Noisy","Quiet","Loud"],answer:"Quiet"},
+  {word:"Quick",options:["Fast","Slow","Late"],answer:"Fast"},
+  {word:"Huge",options:["Small","Tiny","Very large"],answer:"Very large"},
+  {word:"Kind",options:["Rude","Gentle","Harsh"],answer:"Gentle"},
+  {word:"Angry",options:["Calm","Mad","Peaceful"],answer:"Mad"},
+  {word:"Clean",options:["Dirty","Neat","Messy"],answer:"Neat"},
+  {word:"Old",options:["Ancient","Young","New"],answer:"Ancient"},
+  {word:"Smart",options:["Clever","Dull","Weak"],answer:"Clever"}
+];
+
+let current = 0, score = 0, answered = Array(quiz.length).fill(false);
+
+function loadQuestion() {
+  const q = quiz[current];
+  document.getElementById("question").textContent = `(${current + 1}/10) What means "${q.word}"?`;
+  const c = document.getElementById("choices");
+  c.innerHTML = "";
+  q.options.forEach(o => {
+    const b = document.createElement("button");
+    b.textContent = o;
+    b.onclick = () => checkAnswer(o);
+    c.appendChild(b);
+  });
+  document.getElementById("result").textContent = "";
+  updateScore();
+}
+
+function checkAnswer(a) {
+  if (answered[current]) return;
+  const r = document.getElementById("result");
+  if (a === quiz[current].answer) {
+    r.textContent = "✅ Correct!";
+    score++;
+  } else {
+    r.textContent = `❌ The correct answer is "${quiz[current].answer}".`;
+  }
+  answered[current] = true;
+  updateScore();
+}
+
+function nextQuestion() {
+  if (current < quiz.length - 1) {
+    current++;
+    loadQuestion();
+  } else {
+    endGame();
+  }
+}
+
+function prevQuestion() {
+  if (current > 0) {
+    current--;
+    loadQuestion();
+  }
+}
+
+function updateScore() {
+  document.getElementById("scoreboard").textContent = `Score: ${score}/10`;
+}
+
+function endGame() {
+  document.getElementById("question").textContent = "🎉 Game Over!";
+  document.getElementById("choices").innerHTML = "";
+  document.getElementById("result").textContent = `Your final score: ${score}/10`;
+  updateScore();
+}
+
+loadQuestion();
+</script>
+
+</body>
+</html>
+

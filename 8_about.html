@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>About Us</title>
+<style>
+  body {
+    font-family: "Poppins", sans-serif;
+    margin: 0;
+    background-color: #e3f2fd; /* pastel blue background */
+    color: #333;
+  }
+
+  /* Navigation bar */
+  .navbar {
+    background-color: #a0c4ff;
+    padding: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .nav-links a {
+    text-decoration: none;
+    color: #333;
+    margin-right: 20px;
+    font-weight: bold;
+  }
+
+  .nav-links a:hover {
+    color: #0056b3;
+  }
+
+  .logout-btn {
+    background-color: #ff6b6b;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+  }
+
+  .logout-btn:hover {
+    background-color: #ff4040;
+  }
+
+  /* About Us Section */
+  .about-section {
+    text-align: center;
+    padding: 50px 20px;
+  }
+
+  .about-section h1 {
+    font-size: 2.5em;
+    color: #0056b3;
+    margin-bottom: 10px;
+  }
+
+  .team-container {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 30px;
+    margin-top: 40px;
+  }
+
+  .member-card {
+    background-color: white;
+    border-radius: 15px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    width: 200px;
+    text-align: center;
+    padding: 20px;
+    transition: transform 0.2s;
+  }
+
+  .member-card:hover {
+    transform: scale(1.05);
+  }
+
+  .member-card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 15px;
+  }
+
+  .member-card h3 {
+    margin-top: 15px;
+    color: #333;
+  }
+
+  .member-card p {
+    font-size: 14px;
+    color: #777;
+  }
+</style>
+</head>
+<body>
+
+<!-- Navigation Bar -->
+<div class="navbar">
+  <div class="nav-links">
+    <a href="4_dashboard.html">HOME</a>
+    <a href="8_about.html">ABOUT US</a>
+  </div>
+  <button class="logout-btn" onclick="logout()">LOGOUT</button>
+</div>
+
+<!-- About Us Section -->
+<div class="about-section">
+  <h1>Meet Our Team 💙</h1>
+  <p>We are a creative and passionate team who work together with love, learning, and teamwork!</p>
+
+  <div class="team-container">
+    <div class="member-card">
+      <img src="assets/bagui.jpg">
+      <h3>Queen Erich Bagui</h3>
+    </div>
+
+    <div class="member-card">
+      <img src="assets/reyes.jpg">
+      <h3>Kartika Mikhela Reyes</h3>
+      
+    </div>
+
+    <div class="member-card">
+      <img src="assets/ara.jpg">
+      <h3>Ara Pedroche</h3>
+     
+    </div>
+
+    <div class="member-card">
+      <img src="assets/rico.jpg">
+      <h3>Jeniel Cyra Rico</h3>
+      
+    </div>
+
+    <div class="member-card">
+      <img src="assets/diana.jpg">
+      <h3>Maria Diana Hidalgo</h3>
+    
+    </div>
+
+    <div class="member-card">
+      <img src="assets/clyde2.jpg">
+      <h3>Clyde Christian Cabusao</h3>
+     
+    </div>
+  </div>
+</div>
+
+<script>
+function logout() {
+  if (confirm("Are you sure you want to log out?")) {
+    window.location.href = "3_login.html"; // redirect to homepage or login
+  }
+}
+</script>
+
+</body>
+</html>

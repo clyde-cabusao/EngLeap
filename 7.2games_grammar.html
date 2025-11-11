@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>English 6 - Grammar Quest</title>
+<style>
+body{margin:0;font-family:'Poppins',sans-serif;background:linear-gradient(135deg,#d6ebff,#f3f8ff);text-align:center;color:#1a237e;}
+.navbar{background-color:#90caf9;display:flex;justify-content:center;gap:40px;padding:15px 0;position:fixed;top:0;width:100%;box-shadow:0 4px 10px rgba(0,0,0,0.1);}
+.navbar a{text-decoration:none;color:white;font-weight:bold;background-color:#64b5f6;padding:10px 25px;border-radius:25px;}
+.container{margin-top:120px;background:white;display:inline-block;padding:40px;border-radius:20px;box-shadow:0 4px 8px rgba(0,0,0,0.1);}
+.question{font-size:1.3em;margin-bottom:20px;}
+.choices button{display:block;margin:10px auto;padding:10px 20px;border-radius:20px;border:none;background-color:#90caf9;color:white;cursor:pointer;}
+.choices button:hover{background-color:#64b5f6;}
+.navigation button{margin:10px;padding:8px 15px;border:none;border-radius:20px;background-color:#64b5f6;color:white;cursor:pointer;}
+.result{font-weight:bold;margin-top:10px;}
+.scoreboard{font-size:1.2em;color:#0d47a1;margin-top:20px;}
+</style>
+</head>
+<body>
+<div class="navbar">
+  <a href="4_dashboard.html">🏠 HOME</a>
+  <a href="8_about.html">💬 ABOUT US</a>
+  <a href="7_games.html">🎮 GAMES</a>
+</div>
+<div class="container">
+  <h1>✍️ Grammar Quest</h1>
+  <p>Choose the correct grammar form!</p>
+  <div class="question" id="question"></div>
+  <div class="choices" id="choices"></div>
+  <div class="result" id="result"></div>
+  <div class="navigation">
+    <button onclick="prevQuestion()">⬅ Previous</button>
+    <button onclick="nextQuestion()">Next ➡</button>
+  </div>
+  <div class="scoreboard" id="scoreboard"></div>
+</div>
+<script>
+const quiz=[
+{q:"She _____ to school every day.",choices:["go","goes","gone"],a:"goes"},
+{q:"They _____ playing football now.",choices:["is","are","was"],a:"are"},
+{q:"I _____ my homework last night.",choices:["do","did","done"],a:"did"},
+{q:"He _____ watching TV when I arrived.",choices:["was","were","is"],a:"was"},
+{q:"We _____ finish our project tomorrow.",choices:["will","did","do"],a:"will"},
+{q:"The flowers _____ beautiful.",choices:["is","are","was"],a:"are"},
+{q:"She has _____ her work already.",choices:["finish","finished","finishes"],a:"finished"},
+{q:"My brother _____ a new bike yesterday.",choices:["buy","buys","bought"],a:"bought"},
+{q:"They _____ seen that movie.",choices:["has","have","had"],a:"have"},
+{q:"He _____ very tall.",choices:["is","are","was"],a:"is"}
+];
+let i=0,score=0,answered=Array(quiz.length).fill(false);
+function load(){const q=quiz[i];document.getElementById("question").textContent=`(${i+1}/10) ${q.q}`;
+const c=document.getElementById("choices");c.innerHTML="";
+q.choices.forEach(x=>{const b=document.createElement("button");b.textContent=x;b.onclick=()=>check(x);c.appendChild(b);});
+document.getElementById("result").textContent="";update();}
+function check(x){if(answered[i])return;const r=document.getElementById("result");
+if(x===quiz[i].a){r.textContent="✅ Correct!";score++;}else{r.textContent=`❌ The correct answer is "${quiz[i].a}".`;}
+answered[i]=true;update();}
+function nextQuestion(){if(i<quiz.length-1){i++;load();}else{end();}}
+function prevQuestion(){if(i>0){i--;load();}}
+function update(){document.getElementById("scoreboard").textContent=`Score: ${score}/10`;}
+function end(){document.getElementById("question").textContent="🎉 Game Over!";document.getElementById("choices").innerHTML="";document.getElementById("result").textContent=`Final Score: ${score}/10`;}
+load();
+</script>
+</body>
+</html>
